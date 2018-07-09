@@ -1,12 +1,12 @@
-import * as constants from '../actions/constants';
-import { read_cookie, bake_cookie } from 'sfcookies';
+import * as constants from "../actions/constants";
+import { read_cookie, bake_cookie } from "sfcookies";
 
-const BALANCE_COOKIE = 'BALANCE_COOKIE';
+const BALANCE_COOKIE = "BALANCE_COOKIE";
 
 const balance = (state = 0, action) => {
   let balance;
 
-  switch(action.type) {
+  switch (action.type) {
     case constants.SET_BALANCE:
       balance = action.balance;
       break;
@@ -20,9 +20,10 @@ const balance = (state = 0, action) => {
       balance = parseInt(read_cookie(BALANCE_COOKIE), 10) || state;
   }
 
+  //jest provies mock window object, and cookies use window object
   bake_cookie(BALANCE_COOKIE, balance);
 
   return balance;
-}
+};
 
 export default balance;
