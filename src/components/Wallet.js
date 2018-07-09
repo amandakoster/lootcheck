@@ -17,7 +17,6 @@ export class Wallet extends Component {
 
   withdraw = () => this.props.withdraw(this.state.balance);
 
-
   render() {
     return (
       <div>
@@ -36,7 +35,4 @@ export class Wallet extends Component {
 }
 
 // To implicitly return an object from an arrow function surround the object with parentheses
-export default connect(
-  state => ({ balance: state }),
-  { deposit, withdraw }
-)(Wallet);
+export default connect( state => ({ balance: state }), { deposit, withdraw })(Wallet);
