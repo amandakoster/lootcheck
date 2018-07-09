@@ -12,5 +12,5 @@ export class Wallet extends Component{
   }
 };
 
-
-export default connect(state => { balance: state }, null)(Wallet);
+// To implicitly return an object from an arrow function all you need to do is to surround the object with parentheses 
+export default connect(state => ({ balance: state }), null)(Wallet);
