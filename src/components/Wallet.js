@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { balace } from '../actions/balance';
+import { deposit } from "../actions/balance";
 
 //export separatley in order to test without redux store
 export class Wallet extends Component {
@@ -15,14 +15,15 @@ export class Wallet extends Component {
 
   deposit = () => this.props.deposit(this.state.balance);
 
-
   render() {
     return (
       <div>
         <h3 className="balance">Wallet balance: {this.props.balance}</h3>
         <br />
         <input className="input-wallet" onChange={this.updateBalance} />
-        <button className="btn-deposit" onClick={this.deposit}>Deposit</button>
+        <button className="btn-deposit" onClick={this.deposit}>
+          Deposit
+        </button>
       </div>
     );
   }
@@ -31,5 +32,5 @@ export class Wallet extends Component {
 // To implicitly return an object from an arrow function surround the object with parentheses
 export default connect(
   state => ({ balance: state }),
-  null
+  { deposit }
 )(Wallet);
